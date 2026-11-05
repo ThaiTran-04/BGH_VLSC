@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ban Giám Hiệu - Trường Cao Đẳng Văn Lang Sài Gòn</title>
+    
+    <!-- Nhúng Font chữ Montserrat & Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Atlante Display';
+            src: local('Atlante Display'), local('AtlanteDisplay'), local('AtlanteDisplay-Bold'), local('AtlanteDisplay-Medium'), local('AtlanteDisplay-Regular');
+            font-display: swap;
+        }
+
+        :root {
+            --color-primary-red: #db1f32;
+            --color-text-black: #333333;
+            --font-display: 'Atlante Display', 'Montserrat', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #faf7f2;
+            background-image: url('images/bg_tile.png');
+            background-repeat: repeat;
+            color: #333333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        /* ========================================= */
+        /* 1. TOPBAR                                 */
+        /* ========================================= */
+        .vl-topbar {
+            background-color: #db1f32;
+            width: 100%;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .vl-topbar-inner {
+            max-width: 1240px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topbar-btn-apply {
+            background-color: #ff9800;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+        .topbar-btn-apply:hover {
+            background-color: #e68a00;
+        }
+
+        .topbar-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .topbar-link:hover {
+            opacity: 0.85;
+        }
+
+        .topbar-sep {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+        }
+
+        .topbar-lang-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #9b111e;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.25);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .lang-pill img {
+            width: 14px;
+            height: auto;
+            border-radius: 2px;
+        }
+        .lang-pill.active {
+            background: #7d0d18;
+        }
+
+        /* ========================================= */
+        /* 2. MENU ĐIỀU HƯỚNG VÀ LOGO                */
+        /* ========================================= */
+        .vl-nav-wrapper {
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 9999;
+        }
+
+        .vl-nav-container {
+            font-family: 'Montserrat', sans-serif;
+            max-width: 1240px;
+            width: 100%;
+            height: 65px; 
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            position: relative; 
+            padding: 0 20px; 
+            box-sizing: border-box; 
+            margin: 0 auto;
+        }
+
+        .vl-logo-link {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            text-decoration: none;
+            padding-right: 20px;
+        }
+        
+        .vl-logo-img {
+            height: 45px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        .vl-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 22px; 
+            height: 100%;
+        }
+
+        .vl-menu-item {
+            position: static; 
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .vl-menu-item.dropdown-basic {
+            position: relative;
+        }
+
+        .vl-menu-link {
+            text-decoration: none;
+            color: #333333;
+            font-size: 14px; 
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.3s;
+            cursor: pointer;
+            white-space: nowrap; 
+            height: 100%; 
+        }
+
+        .vl-menu-link svg {
+            width: 10px;
+            height: 10px;
+            stroke: #666;
+            transition: transform 0.3s, stroke 0.3s;
+        }
+
+        .vl-menu-item:hover .vl-menu-link {
+            color: #db1f32;
+        }
+        .vl-menu-item:hover .vl-menu-link svg {
+            stroke: #db1f32;
+            transform: rotate(180deg);
+        }
+
+        /* Khung Dropdown Nhỏ */
+        .vl-dropdown {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background: #ffffff;
+            border-radius: 12px;
+            border-top: 3px solid #db1f32;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            min-width: 260px;
+            padding: 10px 0;
+        }
+        
+        .vl-dropdown-right {
+            left: auto;
+            right: 0;
+        }
+
+        .vl-menu-item:hover .vl-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .vl-drop-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vl-drop-item {
+            position: relative;
+        }
+
+        .vl-drop-link {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 14px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f5f5f5;
+            transition: all 0.2s;
+        }
+
+        .vl-drop-item:last-child .vl-drop-link {
+            border-bottom: none;
+        }
+
+        .vl-drop-link::before {
+            content: "›";
+            font-size: 18px;
+            color: #999;
+            margin-right: 10px;
+            line-height: 1;
+            margin-top: -2px;
+            transition: color 0.2s, transform 0.2s;
+            flex-shrink: 0; 
+        }
+
+        .vl-drop-text {
+            flex: 1;
+            line-height: 1.5;
+            white-space: normal;
+        }
+
+        .vl-drop-link.indented {
+            padding-left: 45px;
+        }
+        .vl-drop-link.indented::before {
+            content: "›";
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .vl-drop-link:hover {
+            color: #db1f32;
+            background-color: #fcfcfc;
+        }
+        .vl-drop-link:hover::before {
+            color: #db1f32;
+            transform: translateX(3px);
+        }
+
+        .vl-badge-new {
+            background-color: #db1f32;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-left: 8px;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        /* Mega Menus */
+        .vl-mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            width: 100%; 
+            background: #ffffff;
+            border-radius: 12px;
+            border-top: 3px solid #db1f32;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; 
+        }
+        
+        .vl-menu-item:hover .vl-mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .vl-mega-news { display: flex; gap: 20px; }
+        .vl-news-card { flex: 1; text-align: center; text-decoration: none; }
+        .vl-news-img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; transition: transform 0.3s; }
+        .vl-news-card:hover .vl-news-img { transform: scale(1.03); }
+        .vl-news-title { color: #333333; font-size: 14px; font-weight: 500; transition: color 0.2s; line-height: 1.4;}
+        .vl-news-card:hover .vl-news-title { color: #db1f32; }
+
+        .vl-mega-courses { display: flex; gap: 20px; padding: 25px 20px;}
+        .vl-course-col { flex: 1; }
+        .vl-course-title { display: flex; align-items: center; color: #db1f32; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #ffebeb; margin-top: 15px; line-height: 1.3;}
+        .vl-course-title:first-child { margin-top: 0; }
+        .vl-course-icon { width: 18px; height: 18px; margin-right: 8px; object-fit: contain; flex-shrink: 0;}
+        .vl-course-list { list-style: none; padding: 0; margin: 0; }
+        .vl-course-item a { text-decoration: none; color: #333333; font-size: 13px; display: flex; align-items: center; padding: 7px 0; transition: color 0.2s; }
+        .vl-course-item a::before { content: "›"; color: #999; margin-right: 6px; font-size: 16px; transition: transform 0.2s; }
+        .vl-course-item a:hover { color: #db1f32; }
+        .vl-course-item a:hover::before { color: #db1f32; transform: translateX(3px); }
+
+        .vl-mega-student { display: flex; gap: 20px; padding: 20px; }
+        .vl-student-cols { flex: 1.4; display: flex; gap: 20px; z-index: 2; position: relative; } 
+        .vl-student-col { flex: 1; }
+        .vl-student-img-wrap { 
+            flex: 1; 
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: flex-end; 
+            margin-bottom: -20px;
+            margin-right: -20px;
+            z-index: 1;
+        }
+        .vl-student-img { 
+            width: auto; 
+            max-width: 110%; 
+            height: 300px; 
+            object-fit: contain; 
+            object-position: bottom right;
+        }
+
+        /* ========================================= */
+        /* 3. HERO BANNER - THUẦN CODE & CSS         */
+        /* ========================================= */
+        .hero-banner-section {
+            width: 100%;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner-container {
+            width: 100%;
+            height: 480px;
+            background: url('images/hero_stage.jpg') center top / cover no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-slogan-wrap {
+            text-align: center;
+            padding-top: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            z-index: 2;
+        }
+
+        .hero-slogan-l1 {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff3344;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 1px 2px #fff;
+            margin-bottom: 6px;
+        }
+
+        .hero-slogan-l2 {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffeb3b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px #ffc107, 0 0 25px #ff9800, 0 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 6px;
+        }
+
+        .hero-slogan-l3 {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffeb3b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px #ffc107, 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-ribbon-bar {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(219,31,50,0) 0%, rgba(219,31,50,0.5) 20%, rgba(219,31,50,0.92) 65%, #db1f32 100%);
+            padding: 55px 20px 32px 20px;
+            z-index: 2;
+        }
+
+        .hero-ribbon-inner {
+            max-width: 1220px;
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 95px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .hero-ribbon-title {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 0 0 6px 0;
+            line-height: 1.2;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+        }
+
+        .hero-ribbon-sub {
+            color: #ffffff;
+            font-size: 16.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+        }
+
+        /* ========================================= */
+        /* 4. BAN GIÁM HIỆU - THUẦN CODE HTML/CSS    */
+        /* ========================================= */
+        .leadership-wrapper {
+            max-width: 1220px;
+            width: 100%;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .leader-card-row {
+            display: flex;
+            align-items: center;
+            max-width: 1140px;
+            width: 100%;
+            position: relative;
+        }
+
+        .leader-card-row.card-hung {
+            margin-right: auto;
+        }
+
+        .leader-card-row.card-nhan {
+            margin-left: auto;
+        }
+
+        /* Khung huy hiệu chân dung hình cuốn sách mở (SVG + Cutout PNG) */
+        .leader-badge-container {
+            position: relative;
+            width: 230px;
+            height: 290px;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .badge-svg-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
+        }
+
+        .leader-cutout-img {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: auto;
+            max-height: 310px;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .cutout-hung {
+            max-height: 320px;
+            bottom: 10px;
+        }
+
+        .cutout-nhan {
+            max-height: 310px;
+            bottom: 10px;
+        }
+
+        /* Khung nội dung text màu đỏ */
+        .leader-info-box {
+            flex: 1;
+            background-color: #db1f32;
+            color: #ffffff;
+            padding: 30px 36px;
+            border-radius: 4px;
+            box-shadow: 0 6px 20px rgba(219, 31, 50, 0.22);
+            z-index: 1;
+        }
+
+        .card-hung .leader-info-box {
+            margin-left: -20px;
+            padding-left: 45px;
+        }
+
+        .card-nhan .leader-info-box {
+            margin-right: -20px;
+            padding-right: 45px;
+            text-align: right;
+        }
+
+        .leader-info-name {
+            font-size: 18.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+            color: #ffffff;
+        }
+
+        .leader-info-role {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+            opacity: 0.95;
+        }
+
+        .leader-info-quote {
+            font-size: 13.5px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #ffffff;
+        }
+
+        /* ========================================= */
+        /* 5. SECTION TRIẾT LÝ GIÁO DỤC              */
+        /* ========================================= */
+        .trietly-header-banner {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(90deg, #db1f32 0%, #db1f32 22%, rgba(219,31,50,0.82) 30%, rgba(219,31,50,0) 44%), 
+                        url('images/graduates.jpg') right center / cover no-repeat;
+            display: flex;
+            align-items: center;
+        }
+
+        .trietly-banner-inner {
+            max-width: 1220px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .trietly-banner-title {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+        }
+
+        .trietly-body-content {
+            max-width: 1220px;
+            width: 100%;
+            margin: 40px auto 55px auto;
+            padding: 0 20px;
+        }
+
+        .office-group-img {
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto 40px auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+        }
+
+        .trietly-main-heading {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #db1f32;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .trietly-main-desc {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: #db1f32;
+            max-width: 1140px;
+            margin: 0 auto 35px auto;
+            line-height: 1.65;
+        }
+
+        .pillars-grid {
+            display: flex;
+            gap: 24px;
+            max-width: 1220px;
+            margin: 0 auto;
+        }
+
+        .pillar-card {
+            flex: 1;
+            background-color: #db1f32;
+            border-radius: 24px;
+            padding: 28px 22px;
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(219, 31, 50, 0.22);
+            transition: transform 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pillar-card h3 {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .pillar-card ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .pillar-card li {
+            margin-bottom: 10px;
+        }
+        .pillar-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================= */
+        /* 6. SỨ MỆNH - TẦM NHÌN - MỤC TIÊU          */
+        /* ========================================= */
+        .section-bar-red {
+            width: 100%;
+            background-color: #db1f32;
+            padding: 16px 20px;
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .section-bar-red h2 {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .bar-mvg h2 {
+            color: #feeaa9;
+        }
+
+        .mvg-container {
+            max-width: 1220px;
+            width: 100%;
+            margin: 35px auto 45px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .mvg-left {
+            flex: 1.35;
+        }
+
+        .mvg-heading {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            color: #db1f32;
+            font-size: 21px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .mvg-text {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #db1f32;
+            line-height: 1.65;
+            text-align: justify;
+            margin-bottom: 22px;
+        }
+
+        .mvg-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13.5px;
+            font-weight: 500;
+            line-height: 1.65;
+            color: #db1f32;
+        }
+
+        .mvg-list li {
+            margin-bottom: 7px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .mvg-list strong {
+            color: #db1f32;
+            font-weight: 800;
+        }
+
+        .mvg-right {
+            flex: 1;
+        }
+
+        .mvg-stage-img {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .mvg-stage-img:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================= */
+        /* 7. GIÁ TRỊ CỐT LÕI                        */
+        /* ========================================= */
+        .values-container {
+            max-width: 1180px;
+            width: 100%;
+            margin: 50px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .value-card-row {
+            position: relative;
+            border: 1.5px solid #db1f32;
+            border-radius: 4px;
+            background: #ffffff;
+            margin-bottom: 40px;
+            padding: 28px 32px 28px 175px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            min-height: 115px;
+            display: flex;
+            align-items: center;
+        }
+
+        .value-badge-pill {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            position: absolute;
+            left: -32px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #db1f32;
+            color: #ffffff;
+            padding: 13px 32px;
+            border-radius: 35px;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(219, 31, 50, 0.35);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .value-list {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+            font-size: 13.5px;
+            font-weight: 500;
+            line-height: 1.65;
+            color: #db1f32;
+        }
+
+        .value-list li {
+            margin-bottom: 6px;
+        }
+        .value-list li:last-child {
+            margin-bottom: 0;
+        }
+        .value-list li::marker {
+            color: #db1f32;
+        }
+
+        /* ĐOẠN VĂN TỔNG KẾT BÊN DƯỚI */
+        .core-summary-box {
+            max-width: 1180px;
+            width: 100%;
+            margin: 30px auto 45px auto;
+            padding: 0 20px;
+            font-size: 13.5px;
+            font-weight: 500;
+            line-height: 1.75;
+            color: #db1f32;
+            text-align: justify;
+        }
+
+        .core-summary-box strong {
+            color: #db1f32;
+            font-weight: 700;
+        }
+
+        /* ========================================= */
+        /* 8. MAIN FOOTER (THEO ẢNH MỚI BẠN GỬI)     */
+        /* ========================================= */
+        .vl-footer {
+            background-color: #db1f32;
+            color: #ffffff;
+            padding: 35px 20px 40px 20px;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .vl-footer-inner {
+            max-width: 1220px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .footer-col-1 {
+            flex: 1.1;
+        }
+
+        .footer-col-2 {
+            flex: 1.25;
+        }
+
+        .footer-col-3 {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .footer-heading {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-divider-line {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.45);
+            margin-bottom: 16px;
+        }
+
+        .vlu-main-logo {
+            margin-bottom: 14px;
+        }
+
+        .img-vlu {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-sub-logos {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sub-logo {
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+        }
+        .sub-logo.round {
+            height: 32px;
+        }
+
+        .footer-contact-line {
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-hotline-wrap {
+            margin-top: 14px;
+        }
+
+        .btn-hotline-pill {
+            display: inline-block;
+            background-color: #0e1f68;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 8px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-hotline-pill:hover {
+            background-color: #08154a;
+            transform: translateY(-1px);
+        }
+
+        .footer-map-wrapper {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            transition: transform 0.2s;
+        }
+        .footer-map-wrapper:hover {
+            transform: scale(1.02);
+        }
+
+        .footer-map-image {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================= */
+        /* 9. STICKY BOTTOM BANNER                   */
+        /* ========================================= */
+        .sticky-bottom-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99999;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 6px;
+        }
+
+        .sticky-banner-wrap {
+            pointer-events: auto;
+            position: relative;
+            max-width: 820px;
+            width: 95%;
+            background: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+            border: 1px solid #ffd2d5;
+            overflow: hidden;
+        }
+
+        .sticky-close-btn {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            background: rgba(0,0,0,0.5);
+            color: #ffffff;
+            border: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 11px;
+            line-height: 18px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+        .sticky-close-btn:hover {
+            background: #db1f32;
+        }
+
+        .sticky-banner-body {
+            display: flex;
+            align-items: center;
+            height: 70px;
+        }
+
+        .sticky-banner-thumb {
+            height: 100%;
+            width: 180px;
+            flex-shrink: 0;
+        }
+        .sticky-banner-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .sticky-banner-text {
+            flex: 1;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .sticky-sub {
+            font-size: 14px;
+            font-weight: 700;
+            color: #db1f32;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sticky-main {
+            font-family: 'Atlante Display', 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: #db1f32;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sticky-banner-action {
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .sticky-action-btn {
+            display: inline-block;
+            background-color: #db1f32;
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 800;
+            padding: 9px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .sticky-action-btn:hover {
+            background-color: #b51525;
+        }
+
+        /* ========================================= */
+        /* RESPONSIVE CHO MOBILE (MAX 768px)         */
+        /* ========================================= */
+        .vl-mobile-toggle { display: none; }
+
+        @media (max-width: 768px) {
+            .vl-topbar-inner { width: 100%; justify-content: space-between; }
+            .vl-nav-container { width: 100%; padding: 0 15px; }
+            .vl-logo-img { height: 35px; } 
+
+            .vl-mobile-toggle {
+                display: flex; flex-direction: column; justify-content: space-between;
+                width: 26px; height: 18px; cursor: pointer;
+            }
+            .vl-mobile-toggle span { display: block; width: 100%; height: 3px; background-color: #db1f32; border-radius: 2px; transition: all 0.3s; }
+            .vl-mobile-toggle.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+            .vl-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+            .vl-mobile-toggle.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+            .vl-menu {
+                position: absolute; top: 60px; left: 0; width: 100%;
+                background: #fff; flex-direction: column; align-items: flex-start; gap: 0;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1); display: none; 
+                height: auto !important; max-height: calc(100vh - 60px); overflow-y: auto;
+            }
+            .vl-menu.active { display: flex; } 
+
+            .vl-menu-item { width: 100%; height: auto !important; flex-direction: column; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding: 0; }
+            .vl-menu-link { width: 100%; padding: 15px 20px; box-sizing: border-box; font-size: 15px; height: auto !important; }
+
+            .vl-dropdown, .vl-mega-menu {
+                position: static; width: 100%; opacity: 1; visibility: visible; transform: none;
+                box-shadow: none; border-radius: 0; border-top: none;
+                background: #fdfdfd; padding: 0 20px; display: none; 
+            }
+
+            .vl-menu-item.active .vl-dropdown, .vl-menu-item.active .vl-mega-menu { display: block; padding-bottom: 15px; }
+            .vl-menu-item.active .vl-menu-link { color: #db1f32; font-weight: 600; }
+            .vl-menu-item.active .vl-menu-link svg { transform: rotate(180deg); stroke: #db1f32; }
+
+            .vl-mega-news, .vl-mega-courses, .vl-mega-student, .vl-student-cols { flex-direction: column; gap: 15px; }
+            .vl-mega-courses, .vl-mega-student { padding: 10px 0; }
+            .vl-news-card { display: flex; align-items: center; text-align: left; gap: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;}
+            .vl-news-img { width: 80px; height: 50px; margin-bottom: 0; border-radius: 4px; }
+            .vl-course-title { margin-top: 20px; font-size: 13px; }
+            .vl-course-title:first-child { margin-top: 0; }
+            .vl-drop-link { padding: 10px 0; }
+            .vl-student-img-wrap { display: none; } 
+
+            /* Nội dung trang trên Mobile */
+            .hero-banner-container {
+                height: 380px;
+            }
+            .hero-slogan-l1 { font-size: 16px; }
+            .hero-slogan-l2 { font-size: 19px; }
+            .hero-slogan-l3 { font-size: 15px; }
+            .hero-ribbon-title { font-size: 24px; }
+            .hero-ribbon-inner { padding-left: 15px !important; }
+            .hero-ribbon-bar { padding: 30px 15px 20px 15px !important; }
+
+            .leadership-wrapper,
+            .trietly-banner-inner,
+            .trietly-body-content,
+            .mvg-container,
+            .values-container,
+            .core-summary-box,
+            .vl-footer-inner {
+                width: 100% !important;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .leader-card-row {
+                flex-direction: column;
+                text-align: left !important;
+            }
+            .card-hung .leader-info-box,
+            .card-nhan .leader-info-box {
+                margin: 0;
+                padding: 20px;
+                text-align: left;
+            }
+
+            .pillars-grid, .mvg-container, .vl-footer-inner {
+                flex-direction: column;
+            }
+
+            .value-card-row {
+                padding: 55px 15px 20px 15px;
+            }
+            .value-badge-pill {
+                top: 0;
+                left: 20px;
+                transform: translateY(-50%);
+            }
+
+            .footer-col-3 {
+                justify-content: flex-start;
+            }
+
+            .sticky-banner-thumb {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================= -->
+    <!-- 1. THANH TOPBAR PHÍA TRÊN CÙNG            -->
+    <!-- ========================================= -->
+    <header class="vl-topbar">
+        <div class="vl-topbar-inner">
+            <a href="https://xettuyen.vanlangsaigon.edu.vn/" target="_blank" class="topbar-btn-apply">Đăng ký xét tuyển</a>
+            <span class="topbar-sep">|</span>
+            <a href="#" class="topbar-link">Liên hệ</a>
+            <span class="topbar-sep">|</span>
+            <div class="topbar-lang-pills">
+                <a href="#" class="lang-pill active">
+                    <img src="https://flagcdn.com/w20/vn.png" alt="VN"> Vietnamese
+                </a>
+                <a href="#" class="lang-pill">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="GB"> English
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- 2. THANH MENU CHÍNH VÀ LOGO (CODE CỦA BẠN)-->
+    <!-- ========================================= -->
+    <header class="vl-nav-wrapper">
+        <nav class="vl-nav-container">
+        <!-- LOGO BÊN TRÁI -->
+        <a href="#" class="vl-logo-link">
+            <img src="https://lh3.googleusercontent.com/d/1ds9t7cTe0LAdCJpcDJXFkANO-rHoiOvK" alt="Văn Lang Sài Gòn" class="vl-logo-img">
+        </a>
+        
+        <!-- NÚT HAMBURGER DÀNH CHO MOBILE -->
+        <div class="vl-mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="vl-menu">
+            <!-- 1. GIỚI THIỆU -->
+            <li class="vl-menu-item dropdown-basic">
+                <a class="vl-menu-link">Giới thiệu <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-dropdown">
+                    <ul class="vl-drop-list">
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/cao-dang-van-lang-sai-gon/" class="vl-drop-link"><span class="vl-drop-text">Giới thiệu VLSC</span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/gioi-thieu-cao-dang-van-lang-sai-gon/" class="vl-drop-link"><span class="vl-drop-text">Ban Giám Hiệu</span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/cong-khai-giao-duc/" class="vl-drop-link"><span class="vl-drop-text">Công khai giáo dục</span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/chuyen-tham-quan-thuc-te-ao-cao-dang-van-lang-sai-gon/" class="vl-drop-link"><span class="vl-drop-text">Khám phá 360 Virtual Tour <span class="vl-badge-new">NEW</span></span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/co-so-vat-chat/" class="vl-drop-link"><span class="vl-drop-text">Cơ sở vật chất <span class="vl-badge-new">NEW</span></span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/flipbook/vlsc-brochure-2026/" class="vl-drop-link"><span class="vl-drop-text">Brochure 2026 - 24 tháng sẵn sàng bước ra thế giới</span></a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- 2. TIN TỨC -->
+            <li class="vl-menu-item">
+                <a class="vl-menu-link">Tin tức <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-mega-menu vl-mega-news">
+                    <a href="https://vanlangsaigon.edu.vn/goc-nhin-bao-chi/" class="vl-news-card">
+                        <img src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" class="vl-news-img" alt="Góc nhìn báo chí">
+                        <div class="vl-news-title">Góc nhìn báo chí</div>
+                    </a>
+                    <a href="https://vanlangsaigon.edu.vn/goc-nhin-doanh-nghiep/" class="vl-news-card">
+                        <img src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" class="vl-news-img" alt="Góc nhìn Doanh nghiệp">
+                        <div class="vl-news-title">Góc nhìn Doanh nghiệp</div>
+                    </a>
+                    <a href="https://vanlangsaigon.edu.vn/su-kien/" class="vl-news-card">
+                        <img src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" class="vl-news-img" alt="Sự kiện VLSC">
+                        <div class="vl-news-title">Sự kiện VLSC</div>
+                    </a>
+                    <a href="https://vanlangsaigon.edu.vn/thong-bao/" class="vl-news-card">
+                        <img src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" class="vl-news-img" alt="Thông báo">
+                        <div class="vl-news-title">Thông báo</div>
+                    </a>
+                </div>
+            </li>
+
+            <!-- 3. TUYỂN SINH -->
+            <li class="vl-menu-item dropdown-basic">
+                <a class="vl-menu-link">Tuyển sinh <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-dropdown">
+                    <ul class="vl-drop-list">
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/tuyen-sinh/" class="vl-drop-link"><span class="vl-drop-text">Tin Tuyển sinh</span></a></li>
+                        <li class="vl-drop-item"><a href="https://xettuyen.vanlangsaigon.edu.vn/" class="vl-drop-link"><span class="vl-drop-text">Đăng ký xét tuyển <span class="vl-badge-new">NEW</span></span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/hoc-phi-va-hoc-bong-nam-2025/" class="vl-drop-link"><span class="vl-drop-text">Học phí - Học bổng <span class="vl-badge-new">NEW</span></span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/quy-trinh-nhap-hoc-cao-dang-van-lang-sai-gon/" class="vl-drop-link"><span class="vl-drop-text">Hướng dẫn nhập học</span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/quy-che-tuyen-sinh/" class="vl-drop-link"><span class="vl-drop-text">Quy chế tuyển sinh</span></a></li>
+                        <li class="vl-drop-item"><a href="https://vanlangsaigon.edu.vn/tuyen-sinh-quoc-te/" class="vl-drop-link"><span class="vl-drop-text">Tuyển sinh quốc tế</span></a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- 4. NGÀNH ĐÀO TẠO -->
+            <li class="vl-menu-item">
+                <a class="vl-menu-link">Ngành đào tạo <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-mega-menu vl-mega-courses">
+                    <!-- Cột 1 -->
+                    <div class="vl-course-col">
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            KINH TẾ - QUẢN TRỊ
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Quản trị kinh doanh</a></li>
+                            <li class="vl-course-item"><a href="#">Kinh doanh thương mại</a></li>
+                            <li class="vl-course-item"><a href="#">Thương mại điện tử</a></li>
+                            <li class="vl-course-item"><a href="#">Tài chính ngân hàng</a></li>
+                            <li class="vl-course-item"><a href="#">QTKD Bất động sản</a></li>
+                            <li class="vl-course-item"><a href="#">Quản trị nhân sự</a></li>
+                            <li class="vl-course-item"><a href="#">Quản trị văn phòng (Thư ký Y khoa)</a></li>
+                            <li class="vl-course-item"><a href="#">Kế toán</a></li>
+                            <li class="vl-course-item"><a href="#">Quản lý công nghiệp</a></li>
+                            <li class="vl-course-item"><a href="#">CN Logistic</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cột 2 -->
+                    <div class="vl-course-col">
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            CÔNG NGHỆ - THIẾT KẾ
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Công nghệ thông tin</a></li>
+                            <li class="vl-course-item"><a href="#">Công nghệ thông tin (UDPM)</a></li>
+                            <li class="vl-course-item"><a href="#">Công nghệ AI</a></li>
+                            <li class="vl-course-item"><a href="#">Công nghệ bán dẫn</a></li>
+                            <li class="vl-course-item"><a href="#">Công nghệ ô tô</a></li>
+                            <li class="vl-course-item"><a href="#">Thiết kế đồ hoạ</a></li>
+                            <li class="vl-course-item"><a href="#">Đồ hoạ đa phương tiện</a></li>
+                            <li class="vl-course-item"><a href="#">Thiết kế nội thất</a></li>
+                            <li class="vl-course-item"><a href="#">Quản lý xây dựng</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cột 3 -->
+                    <div class="vl-course-col">
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            TRUYỀN THÔNG - MARKETING
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Marketing</a></li>
+                            <li class="vl-course-item"><a href="#">CN Digital Marketing</a></li>
+                            <li class="vl-course-item"><a href="#">Quan hệ công chúng</a></li>
+                            <li class="vl-course-item"><a href="#">Truyền thông đa phương tiện</a></li>
+                        </ul>
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            NGÔN NGỮ
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Tiếng Anh</a></li>
+                            <li class="vl-course-item"><a href="#">Tiếng Nhật</a></li>
+                            <li class="vl-course-item"><a href="#">Tiếng Hàn Quốc</a></li>
+                            <li class="vl-course-item"><a href="#">Tiếng Đức</a></li>
+                            <li class="vl-course-item"><a href="#">Tiếng Trung Quốc</a></li>
+                            <li class="vl-course-item"><a href="#">Tiếng Việt và Văn hoá Việt Nam</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cột 4 -->
+                    <div class="vl-course-col">
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            DU LỊCH - KHÁCH SẠN - NHÀ HÀNG
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Quản trị dịch vụ du lịch và lữ hành</a></li>
+                            <li class="vl-course-item"><a href="#">Quản trị khách sạn</a></li>
+                            <li class="vl-course-item"><a href="#">Quản trị nhà hàng và Dịch vụ ăn uống</a></li>
+                            <li class="vl-course-item"><a href="#">Kỹ thuật pha chế đồ uống</a></li>
+                        </ul>
+                        <div class="vl-course-title">
+                            <img class="vl-course-icon" src="https://lh3.googleusercontent.com/d/1CqSmD2U5wAvm3tTDPTmlWqykr_1w-IBA" alt="icon">
+                            SỨC KHOẺ & SẮC ĐẸP
+                        </div>
+                        <ul class="vl-course-list">
+                            <li class="vl-course-item"><a href="#">Chăm sóc sắc đẹp</a></li>
+                            <li class="vl-course-item"><a href="#">Kỹ thuật tạo mẫu tóc</a></li>
+                            <li class="vl-course-item"><a href="#">Vật lý trị liệu và phục hồi chức năng</a></li>
+                            <li class="vl-course-item"><a href="#">Y học cổ truyền</a></li>
+                            <li class="vl-course-item"><a href="#">Điều dưỡng (CN Nha khoa)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <!-- 5. ĐÀO TẠO -->
+            <li class="vl-menu-item dropdown-basic">
+                <a class="vl-menu-link">Đào tạo <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-dropdown">
+                    <ul class="vl-drop-list">
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Quy chế - Quy định</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Biểu mẫu đào tạo</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Hướng dẫn đăng nhập Email</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Kế hoạch đào tạo</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Năm học 2025 - 2026</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Năm học 2024 - 2025</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Năm học 2023 - 2024</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Năm học 2022 - 2023</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Năm học 2021 - 2022</span></a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- 6. SINH VIÊN -->
+            <li class="vl-menu-item">
+                <a class="vl-menu-link">Sinh viên <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-mega-menu vl-mega-student">
+                    <div class="vl-student-cols">
+                        <ul class="vl-drop-list vl-student-col">
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Quy chế - Quy định</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Sinh viên cần biết</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Thành tựu sinh viên</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Giải thưởng</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Dự án sinh viên</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Hoạt động sinh viên</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Phong trào</span></a></li>
+                        </ul>
+                        <ul class="vl-drop-list vl-student-col">
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Trải nghiệm sinh viên <span class="vl-badge-new">NEW</span></span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Cơ hội quốc tế</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Kiến tập - Thực tập</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Việc làm sinh viên</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Sổ tay sinh viên</span></a></li>
+                            <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Biểu mẫu sinh viên</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="vl-student-img-wrap">
+                        <img src="https://i.ibb.co/dsQRbcp2/11-removebg-preview.png" class="vl-student-img" alt="Sinh viên">
+                    </div>
+                </div>
+            </li>
+
+            <!-- 7. HÀNH CHÍNH -->
+            <li class="vl-menu-item dropdown-basic">
+                <a class="vl-menu-link">Hành chính <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+                <div class="vl-dropdown vl-dropdown-right" style="min-width: 290px;">
+                    <ul class="vl-drop-list">
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Văn bản trường</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Nội quy - Quy định - Quyết định</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Quy trình nhân sự</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link indented"><span class="vl-drop-text">Thông báo</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Biểu mẫu</span></a></li>
+                        <li class="vl-drop-item"><a href="#" class="vl-drop-link"><span class="vl-drop-text">Tin tuyển dụng</span></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- 3. HERO BANNER - THUẦN CODE & CSS         -->
+    <!-- ========================================= -->
+    <section class="hero-banner-section">
+        <div class="hero-banner-container">
+            <!-- Màn hình LED thông điệp chiến lược -->
+            <div class="hero-slogan-wrap">
+                <div class="hero-slogan-l1"></div>
+                <div class="hero-slogan-l2"></div>
+                <div class="hero-slogan-l3"></div>
+            </div>
+
+            <!-- Dải băng đỏ góc dưới -->
+            <div class="hero-ribbon-bar">
+                <div class="hero-ribbon-inner">
+                    <h1 class="hero-ribbon-title">BAN GIÁM HIỆU</h1>
+                    <div class="hero-ribbon-sub">TRƯỜNG CAO ĐẲNG VĂN LANG SÀI GÒN</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- 4. THÔNG TIN BAN GIÁM HIỆU - THUẦN CODE   -->
+    <!-- ========================================= -->
+    <section class="leadership-wrapper">
+        <!-- Card 1: ThS. Trương Văn Hưng (Lệch trái) -->
+        <div class="leader-card-row card-hung">
+            <div class="leader-badge-container">
+                <svg class="badge-svg-bg" viewBox="0 0 180 230" preserveAspectRatio="none">
+                    <polygon points="4,22 90,36 176,22 176,208 90,224 4,208" fill="#db1f32" stroke="#f5b041" stroke-width="3" />
+                </svg>
+                <img src="images/hung_portrait.png" alt="ThS. Trương Văn Hưng" class="leader-cutout-img cutout-hung">
+            </div>
+            <div class="leader-info-box">
+                <h3 class="leader-info-name">ThS. TRƯƠNG VĂN HÙNG</h3>
+                <div class="leader-info-role">Hiệu trưởng</div>
+                <p class="leader-info-quote">“Tại VLSC, chúng tôi tin rằng mọi thành công đều bắt đầu từ sự ‘Nỗ lực - Nỗ lực - Và nỗ lực’. Chúng tôi cam kết kiến tạo một không gian học tập ứng dụng thực tiễn để bạn rèn luyện bản lĩnh, nuôi dưỡng niềm tin và luôn hướng về phía trước như những đóa hướng dương đón ánh mặt trời. Hãy bắt đầu hành trình tương lai tại VLSC với một tinh thần chủ động và sẵn sàng chinh phục!”</p>
+            </div>
+        </div>
+
+        <!-- Card 2: TS. Trần Thanh Nhàn (Lệch phải, nội dung căn phải) -->
+        <div class="leader-card-row card-nhan">
+            <div class="leader-info-box">
+                <h3 class="leader-info-name">TS. TRẦN THANH NHÀN</h3>
+                <div class="leader-info-role">Phó hiệu trưởng</div>
+                <p class="leader-info-quote">“Sức sống và uy tín của VLSC được minh chứng bằng niềm tin trọn vẹn từ các bậc phụ huynh và sự phát triển toàn diện của người học. Chúng tôi không ngừng nâng cao chất lượng đào tạo để tiếp tục là điểm tựa vững chắc cho hành trình chinh phục tương lai của bạn.”</p>
+            </div>
+            <div class="leader-badge-container">
+                <svg class="badge-svg-bg" viewBox="0 0 180 230" preserveAspectRatio="none">
+                    <polygon points="4,22 90,36 176,22 176,208 90,224 4,208" fill="#db1f32" stroke="#f5b041" stroke-width="3" />
+                </svg>
+                <img src="images/nhan_portrait.png" alt="TS. Trần Thanh Nhàn" class="leader-cutout-img cutout-nhan">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- 5. SECTION TRIẾT LÝ GIÁO DỤC - THUẦN CODE -->
+    <!-- ========================================= -->
+    <section class="trietly-header-banner">
+        <div class="trietly-banner-inner">
+            <h2 class="trietly-banner-title">TRIẾT LÝ GIÁO DỤC</h2>
+        </div>
+    </section>
+
+    <section class="trietly-body-content">
+        <!-- Ảnh nhóm lãnh đạo tại phòng làm việc -->
+        <img src="images/office_group.jpg" alt="Tập thể Lãnh đạo Ban Giám Hiệu Cao đẳng Văn Lang Sài Gòn" class="office-group-img">
+
+        <h2 class="trietly-main-heading">CHÍNH TRỰC - TẬN TÂM - PHÁT TRIỂN</h2>
+        <p class="trietly-main-desc">
+            Là triết lý giáo dục của Cao đẳng Văn Lang Sài Gòn, định hướng và duy trì mọi hoạt động quản lý, đào tạo, học tập của tập thể sư phạm Nhà trường trụ vững trên cơ sở:
+        </p>
+
+        <!-- 3 CỘT TRỤ CỘT BO TRÒN ĐỎ THUẦN CODE -->
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <h3>CHÍNH TRỰC</h3>
+                <ul>
+                    <li>Biểu hiện ở sự trung thực, ngay thẳng, nhất quán từ suy nghĩ, lời nói đến việc làm.</li>
+                    <li>Biểu hiện ở sự trung thực, ngay thẳng, nhất quán từ suy nghĩ, lời nói đến việc làm.</li>
+                    <li>Biểu hiện ở sự trung thực, ngay thẳng, nhất quán từ suy nghĩ, lời nói đến việc làm.</li>
+                    <li>Biểu hiện ở sự trung thực, ngay thẳng, nhất quán từ suy nghĩ, lời nói đến việc làm.</li>
+                </ul>
+            </div>
+
+            <div class="pillar-card">
+                <h3>TẬN TÂM</h3>
+                <ul>
+                    <li>Hành động bằng tất cả ý chí và nỗ lực trong mọi việc.</li>
+                    <li>Tận tâm trong công việc biểu hiện ở lòng yêu nghề, đam mê công việc, hăng say lao động, có tinh thần cầu tiến và cải tiến.</li>
+                    <li>Người tận tâm luôn có ý thức trách nhiệm cao, có sự kiên trì, không dễ nản chí và chịu được áp lực công việc.</li>
+                    <li>Sự tận tâm giúp nâng cao uy tín cá nhân, bồi đắp giá trị của người có phẩm chất này.</li>
+                </ul>
+            </div>
+
+            <div class="pillar-card">
+                <h3>PHÁT TRIỂN</h3>
+                <ul>
+                    <li>Biểu hiện ở sự gia tăng các giá trị cả hữu hình và vô hình trong công việc và cuộc sống.</li>
+                    <li>Phát triển đòi hỏi sự nỗ lực hành động có định hướng và ý chí qua một quá trình của mỗi cá nhân, tập thể.</li>
+                    <li>Phát triển phải gắn với bền vững và hạnh phúc.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- 6. SECTION SỨ MỆNH - TẦM NHÌN - MỤC TIÊU  -->
+    <!-- ========================================= -->
+    <section class="section-bar-red bar-mvg">
+        <h2>SỨ MỆNH - TẦM NHÌN - MỤC TIÊU</h2>
+    </section>
+
+    <section class="mvg-container">
+        <div class="mvg-left">
+            <h3 class="mvg-heading">SỨ MỆNH</h3>
+            <p class="mvg-text">
+                Cao đẳng Văn Lang Sài Gòn đào tạo đội ngũ lao động giỏi nghề, tận tâm, có tinh thần cầu tiến, cải tiến và có đủ năng lực cạnh tranh trong thị trường lao động nội địa và quốc tế.
+            </p>
+
+            <h3 class="mvg-heading">TẦM NHÌN</h3>
+            <p class="mvg-text">
+                Đến năm 2030, VLSC sẽ trở thành một trong những Trường Cao đẳng chất lượng cao, dẫn dắt xu hướng nghề nghiệp, cung ứng nguồn nhân lực đủ năng lực cạnh tranh và bản lĩnh hội nhập thị trường lao động toàn cầu, có sức hút với cả sinh viên trong nước và quốc tế.
+            </p>
+
+            <h3 class="mvg-heading">MỤC TIÊU</h3>
+            <ol class="mvg-list">
+                <li><strong>1.</strong> Chuẩn hóa mô hình đào tạo nghề theo chuẩn quốc tế</li>
+                <li><strong>2.</strong> Tiếp tục phát triển hệ sinh thái hợp tác doanh nghiệp</li>
+                <li><strong>3.</strong> Tăng quy mô sinh viên</li>
+                <li><strong>4.</strong> Đa ngành - Đa phương thức đào tạo (Offline/Online/ Hybird/ On the job)</li>
+                <li><strong>5.</strong> 100% chương trình gắn với việc làm (Workforce Intergrated Learning)</li>
+                <li><strong>6.</strong> Trở thành Trung tâm đào tạo quốc tế chuẩn mực</li>
+            </ol>
+        </div>
+
+        <div class="mvg-right">
+            <img src="images/stage1.jpg" alt="Lễ kỷ niệm 1 năm thành lập Trường" class="mvg-stage-img">
+            <img src="images/stage2.jpg" alt="Hoàn thành xuất sắc mục tiêu chiến lược giai đoạn 2025 - 2030" class="mvg-stage-img">
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- 7. SECTION GIÁ TRỊ CỐT LÕI - THUẦN CODE   -->
+    <!-- ========================================= -->
+    <section class="section-bar-red">
+        <h2>GIÁ TRỊ CỐT LÕI</h2>
+    </section>
+
+    <section class="values-container">
+        <!-- 1. ĐA DẠNG -->
+        <div class="value-card-row">
+            <div class="value-badge-pill">ĐA DẠNG</div>
+            <ul class="value-list">
+                <li>Đa dạng về ngành, nghề đào tạo.</li>
+                <li>Đa dạng về đối tượng đào tạo.</li>
+                <li>Đa dạng về phương thức tuyển sinh.</li>
+                <li>Đa dạng về phương pháp đào tạo.</li>
+                <li>Đa dạng về cơ hội trải nghiệm và nghề nghiệp.</li>
+                <li>Người học có thể đáp ứng nhiều môi trường lao động thực tiễn đa dạng.</li>
+            </ul>
+        </div>
+
+        <!-- 2. LINH HOẠT -->
+        <div class="value-card-row">
+            <div class="value-badge-pill">LINH HOẠT</div>
+            <ul class="value-list">
+                <li>Linh hoạt trong tư duy để luôn có suy nghĩ tích cực, lạc quan, cởi mở chủ động tìm kiếm giải pháp, ý tưởng mới cho mọi vấn đề.</li>
+                <li>Linh hoạt trong hành động để thao tác, tổ chức thực hiện mọi việc hiệu quả, tối ưu hóa việc sử dụng các nguồn lực (nhân lực, tài lực, vật lực).</li>
+                <li>Linh hoạt trong ứng xử để hòa hợp các mối quan hệ, tự trọng và tôn trọng người khác.</li>
+                <li>Linh hoạt để cân bằng và thích ứng trước mọi “biến số” khó lường trong công việc và cuộc sống.</li>
+                <li>Linh hoạt để tự chủ và hạnh phúc.</li>
+                <li>Linh hoạt có thể tạo ra những giá trị khác biệt từ sự giải phóng cảm xúc, tư duy, hành động của mỗi cá nhân.</li>
+            </ul>
+        </div>
+
+        <!-- 3. THỰC TẾ -->
+        <div class="value-card-row">
+            <div class="value-badge-pill">THỰC TẾ</div>
+            <ul class="value-list">
+                <li>Thực tế vừa là điều kiện, cơ sở vừa là mục tiêu của sự đa dạng và linh hoạt.</li>
+                <li>Thực tế biểu hiện trong thực dạy, thực học, thực làm.</li>
+                <li>Thành quả lao động phải mang lại lợi ích thực tế cho người lao động, gia đình và cộng đồng.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ĐOẠN VĂN GIỚI THIỆU PHÍA DƯỚI -->
+    <div class="core-summary-box">
+        Đề ra những giá trị cốt lõi trên, <strong>Cao đẳng Văn Lang Sài Gòn</strong> trước nhất bám sát định hướng sáng lập Trường là tạo nên một hệ sinh thái đào tạo mới, năng động, phù hợp và đáp ứng nhu cầu của nhiều đối tượng từ người học lần đầu đến người có nhu cầu tái đào tạo, từ trình độ cơ bản đến nâng cao, từ người lao động đến nhà tuyển dụng và xã hội. VLSC kiên trì xây dựng môi trường đào tạo thân thiện, bám sát nhu cầu thực tiễn, góp phần huấn luyện và cung ứng đội ngũ lao động không chỉ vững kiến thức, chắc kĩ năng mà còn có thái độ lao động nghiêm túc, có khả năng thích ứng cao với nhiều môi trường, yêu cầu công việc, có ý chí và tinh thần cầu tiến, có mong muốn tự phát triển bản thân để tiến bộ mỗi ngày.
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 8. FOOTER CHÍNH - THUẦN CODE & LOGOS (THEO ẢNH MỚI BẠN GỬI)    -->
+    <!-- ============================================================== -->
+    <footer class="vl-footer">
+        <div class="vl-footer-inner">
+            <!-- Cột 1: Đơn vị cùng hệ thống & Logos -->
+            <div class="footer-col-1">
+                <h4 class="footer-heading">Đơn vị cùng hệ thống</h4>
+                <div class="footer-divider-line"></div>
+                
+                <!-- Logo chính: VANLANG UNIVERSITY -->
+                <div class="vlu-main-logo">
+                    <img src="images/VLU_Logo_Final_VLU_logo ngang_Eng_White.png" alt="VANLANG UNIVERSITY" class="img-vlu">
+                </div>
+                
+                <!-- 3 Logo phụ phía dưới: ĐH KT BD, UPD, UTS -->
+                <div class="footer-sub-logos">
+                    <img src="images/LOGO ĐẠI HỌC KT BD.png" alt="Đại học Kinh tế Bình Dương" class="sub-logo round">
+                    <img src="images/LOGO UPD.png" alt="UPD" class="sub-logo">
+                    <img src="images/LOGO UTS.png" alt="UTS" class="sub-logo">
+                </div>
+            </div>
+
+            <!-- Cột 2: Thông tin liên hệ & Hotline -->
+            <div class="footer-col-2">
+                <h4 class="footer-heading">Đơn vị cùng hệ thống</h4>
+                <div class="footer-divider-line"></div>
+                <p class="footer-contact-line">Địa chỉ: 80/68 Dương Quảng Hàm, Phường An Nhơn, TP.HCM</p>
+                <p class="footer-contact-line">Email: <a href="mailto:tuyensinh@vanlangsaigon.edi.vn" class="footer-link">tuyensinh@vanlangsaigon.edi.vn</a></p>
+                <div class="footer-hotline-wrap">
+                    <a href="tel:0287303999" class="btn-hotline-pill">Hotline: 028 7303 999</a>
+                </div>
+            </div>
+
+            <!-- Cột 3: Bản đồ vị trí Maps -->
+            <div class="footer-col-3">
+                <a href="https://maps.google.com/?q=Trường+Cao+Đẳng+Văn+Lang+Sài+Gòn" target="_blank" class="footer-map-wrapper" title="Xem trên Google Maps">
+                    <img src="images/footer_map.jpg" alt="Bản đồ vị trí Trường Cao Đẳng Văn Lang Sài Gòn" class="footer-map-image">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- 9. STICKY BANNER DƯỚI ĐÁY - THUẦN CODE    -->
+    <!-- ========================================= -->
+    <div class="sticky-bottom-banner" id="stickyBottomBanner">
+        <div class="sticky-banner-wrap">
+            <button class="sticky-close-btn" onclick="document.getElementById('stickyBottomBanner').style.display='none'" title="Đóng banner">✕</button>
+            <div class="sticky-banner-body">
+                <div class="sticky-banner-thumb">
+                    <img src="images/bottom_thumb.jpg" alt="Văn Lang Sài Gòn">
+                </div>
+                <div class="sticky-banner-text">
+                    <div class="sticky-sub">ĐĂNG KÝ XÉT TUYỂN</div>
+                    <div class="sticky-main">NHẬN NGAY HỌC BỔNG HẤP DẪN</div>
+                </div>
+                <div class="sticky-banner-action">
+                    <a href="https://xettuyen.vanlangsaigon.edu.vn/" target="_blank" class="sticky-action-btn">ĐĂNG KÝ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT THỰC THI (TỪ CODE CỦA BẠN)     -->
+    <!-- ========================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggleBtn = document.querySelector('.vl-mobile-toggle');
+            var menu = document.querySelector('.vl-menu');
+            var menuItems = document.querySelectorAll('.vl-menu-item');
+
+            if(toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    menu.classList.toggle('active');
+                });
+            }
+
+            menuItems.forEach(function(item) {
+                var link = item.querySelector('.vl-menu-link');
+                var dropdown = item.querySelector('.vl-dropdown, .vl-mega-menu');
+
+                if (link && dropdown) {
+                    link.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault(); 
+                            var isActive = item.classList.contains('active');
+
+                            menuItems.forEach(function(otherItem) {
+                                otherItem.classList.remove('active');
+                            });
+
+                            if (!isActive) {
+                                item.classList.add('active');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
